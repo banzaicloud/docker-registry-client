@@ -94,9 +94,13 @@ func newFromTransport(registryURL, username, password string, transport http.Rou
 		Logf: logf,
 	}
 
-	if err := registry.Ping(); err != nil {
-		return nil, err
-	}
+	// Remove this for now since JFrog and Harbor have serious issues with ping:
+	// https://github.com/banzaicloud/bank-vaults/issues/712
+	// https://github.com/banzaicloud/bank-vaults/issues/746
+	//
+	// if err := registry.Ping(); err != nil {
+	// 	return nil, err
+	// }
 
 	return registry, nil
 }
